@@ -1,0 +1,71 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.nav ul {
+    margin-top: 20px;
+    list-style-type: none;
+    display: flex;
+    flex: 1 1 0;
+    justify-content: flex-end;
+    
+}
+
+li {
+    
+}
+
+
+
+
+.nav {
+    align-content: center;
+    display: flex;
+    width: 100%;
+    height: 100px;
+   
+    background: #8618180;
+    
+    justify-content: flex-end;
+    
+}
+
+.nav a {
+    display: block;
+    opacity: 1;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 20px;
+    text-align: center;
+    color: antiquewhite;
+}
+
+
+.wrapper {
+    width: 100%;
+    background: url(img/woods.jpg) no-repeat center;
+    height: 3000px;
+    background-size: cover;
+    
+    
+}
+
+.header {
+    display: flex;
+    height: 300px;
+    width: 100%;
+    flex-wrap: wrap;
+    
+}
+
+.header div {
+    width: 100%;
+    height: 100px;
+    color: antiquewhite;
+    font-size: 60px;
+}
+
+
+
+
