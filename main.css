@@ -10,36 +10,36 @@
 }
 
 #nav ul {
-    margin-top: 20px;
+    margin-top: 0px;
     list-style-type: none;
     display: flex;
-    flex: 1 1 0;
+    
     justify-content: flex-start;
 
     
 }
 
 
-
+body {
+    position: relative;
+}
 
 #nav {
-    align-content: center;
-    display: flex;
+    
     width: 100%;
-    height: 17vh;
-    /* position: absolute;
-    */
+    
     background: #3cc47c;
     
-    
-    /* justify-content: flex-start; */
+   
     
 }
 
 .fixed-nav {
     position: fixed;
   top:0;
-  z-index: 1;
+  z-index: 1000;
+  opacity: 0.7;
+  
 }
 
 #nav a {
@@ -67,7 +67,7 @@
     display: flex;
     height: 100vh;
     width: 100%;
-    /* border-radius: 100px; */
+   
     flex-wrap: wrap;
     background: url(img/smoke.jpg) no-repeat center;
     background-size: cover;
@@ -81,26 +81,30 @@
     color: #222;
     font-size: 60px;
     text-align: end;
-    /* font-weight: bold; */
+    
     text-transform: uppercase;
     margin-top: 40px;
     opacity: 0.7;
 }
 
 .aboutMe {
-    margin-top: 200px;
-    width: 100%;
-    height: 400px;
-    background: #e9c893;
-    opacity: 0;
-    transition: all 2s ease-in;
+    display: flex;
 }
 
-.aboutMe div{
-    width: 100%;
-    text-align: center;
-    padding-top: 30px;
-    font-size: 30px;
-    
+.me {
+    margin-top: 150px;
+    margin-left: 30px;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 35vw;
+    border-radius: 50%;
+    background: #3cc47c;
+    /* background-position: 100px, 20px; */
 }
 
+.me div {
+    font-size: 50px;
+}
