@@ -13,5 +13,94 @@
     <div class="player"></div>
     </div>
     
+
+
+
+    <script>
+    var player = document.querySelector('.player')
+    var board = document.querySelector('.wrapper')
+var direction = 0;
+var position = 0;
+var event = 0;
+// var meteor = null;
+// update ();
+
+window.addEventListener('keydown', function(event){
+var key = event.code
+
+if (key === 'ArrowRight') {
+ direction = 1;
+}
+
+if (key === 'ArrowLeft') {
+    direction = -1;
+}
+
+
+})
+
+window.addEventListener('keyup', function (event){
+var key = event.code
+
+if (key === 'ArrowRight') {
+    direction = 0;
+}
+if (key === 'ArrowLeft') {
+    direction = 0;
+}
+
+})
+
+
+
+function createMeteor() {
+    const randomPos = Math.ceil(Math.random() * 910);
+    var board = document.querySelector('.wrapper')
+    var meteor = document.createElement('div')
+    meteor.classList.add('meteor')
+    meteor.style.marginLeft = randomPos + 'px'
+    board.appendChild(meteor)
+
+}
+
+setInterval(function(){
+    createMeteor();
+}, 600)
+
+
+
+setInterval(function(){
+    position += direction
+      player.style.marginLeft = position + 'px';
+      console.log(position)
+}, 1)
+
+        setInterval (function(){
+            if (position < 0) {
+            position = 0 }
+        }, 1)
+
+        setInterval (function(){
+            if (position >= 910) {
+                position = 910
+            }
+        }, 1)
+
+
+
+
+// function update() {
+
+//     function move(direction) {
+//         position += direction
+//         player.style.marginLeft = position + 'px';
+//     }
+    
+
+//     console.log(direction)
+
+//     requestAnimationFrame(update);
+// }
+    </script>
 </body>
 </html>
