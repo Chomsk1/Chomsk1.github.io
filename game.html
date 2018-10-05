@@ -22,6 +22,10 @@
 var direction = 0;
 var position = 0;
 var event = 0;
+var meteorSpeed = 0;
+var meteors = [];
+const randomPos = Math.ceil(Math.random() * 910);
+    const randomSpeed = Math.ceil(Math.random() * 3);
 // var meteor = null;
 // update ();
 
@@ -54,25 +58,37 @@ if (key === 'ArrowLeft') {
 
 
 function createMeteor() {
-    const randomPos = Math.ceil(Math.random() * 910);
-    var board = document.querySelector('.wrapper')
+
+    if (meteors.length < 4) {
     var meteor = document.createElement('div')
     meteor.classList.add('meteor')
+    meteor.speed = Math.ceil(Math.random() * 3)
     meteor.style.marginLeft = randomPos + 'px'
-    board.appendChild(meteor)
+    return meteor;
+    }
 
+}
+
+function putMeteorOnBoard(meteor, board) {
+meteor.style.marginLeft = randomPos = 'px'
+board.appendChild(meteor)
 }
 
 setInterval(function(){
     createMeteor();
-}, 600)
+}, 2000)
 
+setInterval(function (){
+    meteors.forEach( function(meteor){
+        
+        
+}, 2000)
 
 
 setInterval(function(){
     position += direction
       player.style.marginLeft = position + 'px';
-      console.log(position)
+      
 }, 1)
 
         setInterval (function(){

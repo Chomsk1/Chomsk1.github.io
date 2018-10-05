@@ -31,4 +31,5 @@ body {
     width: 50px;
     align-self: flex-start;
     background: black;
+    position: absolute;
 }
