@@ -6,7 +6,7 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="game.css" />
-    <script src="game.js"></script>
+    <!-- <script src="game.js"></script> -->
 </head>
 <body>
     <div class="wrapper">
@@ -18,26 +18,65 @@
 
     <script>
     var player = document.querySelector('.player')
+    var playerPositionX = parseInt(window.getComputedStyle(player).getPropertyValue('left'))
+    
+    var playerRadius = parseInt(window.getComputedStyle(player).getPropertyValue('width')) / 2;
+
+
     var board = document.querySelector('.wrapper')
-var direction = 0;
-var position = 0;
-var event = 0;
-var meteorSpeed = 0;
-var meteors = [];
-const randomPos = Math.ceil(Math.random() * 910);
+    var direction = 0;
+    var position = 0;
+    var event = 0;
+    var meteorSpeed = 0;
+    var meteors = [];
+    const randomPos = Math.ceil(Math.random() * 910);
     const randomSpeed = Math.ceil(Math.random() * 3);
 // var meteor = null;
 // update ();
+
+
+
+
+  update();
+  function update() {
+    
+    meteors.forEach(function (meteor) {
+      var top = parseFloat(window.getComputedStyle(meteor).top);
+      var left = parseFloat(window.getComputedStyle(meteor).left);
+      var playerPositionX = parseInt(window.getComputedStyle(player).getPropertyValue('left'))
+      var playerPositionY = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
+      
+      if (left > playerPositionX - playerRadius && left < playerPositionX + playerRadius && 
+        top === playerPositionY - playerRadius) {
+          console.log('hit')
+      }
+      top += meteor.speed;
+      if (top > board.clientHeight) {
+        meteor.remove()
+      }
+      
+
+      meteor.style.top = top + 'px';
+    })
+   
+
+    movePlayer();
+
+    requestAnimationFrame(update);
+  }
+
+
 
 window.addEventListener('keydown', function(event){
 var key = event.code
 
 if (key === 'ArrowRight') {
- direction = 1;
+ direction = 3;
+ 
 }
 
 if (key === 'ArrowLeft') {
-    direction = -1;
+    direction = -3;
 }
 
 
@@ -59,49 +98,81 @@ if (key === 'ArrowLeft') {
 
 function createMeteor() {
 
-    if (meteors.length < 4) {
+  
     var meteor = document.createElement('div')
     meteor.classList.add('meteor')
     meteor.speed = Math.ceil(Math.random() * 3)
-    meteor.style.marginLeft = randomPos + 'px'
     return meteor;
-    }
+   
 
 }
 
 function putMeteorOnBoard(meteor, board) {
-meteor.style.marginLeft = randomPos = 'px'
+meteor.style.left = Math.random() * 650 + 'px';
 board.appendChild(meteor)
 }
 
-setInterval(function(){
-    createMeteor();
-}, 2000)
 
-setInterval(function (){
-    meteors.forEach( function(meteor){
-        
-        
-}, 2000)
+ function kickMeteor(meteor) {
+    // setTimeout(function () {
+    //   meteors = meteors.filter(function (falling) {
+    //     return meteor !== falling;
+    //   })
+    //   meteor.remove();
+    // }, Math.random() * 3000 + 5000);
+    // if (meteor.top > board.clientHeight) {
+    //     meteor.remove();
+    // }
+    meteors.push(meteor);
+    meteors.sort((a, b) => a.speed - b.speed).forEach(meteor => board.appendChild(meteor));
+  }
 
 
-setInterval(function(){
-    position += direction
-      player.style.marginLeft = position + 'px';
+showMeteorAfterTime(5000);
+
+  function showMeteorAfterTime(time) {
       
-}, 1)
+    setTimeout(function () {
+      var meteor = createMeteor();
+      putMeteorOnBoard(meteor, board);
+      kickMeteor(meteor);
+      showMeteorAfterTime(Math.random() * 1000);
+    }, time);
 
-        setInterval (function(){
-            if (position < 0) {
+  }
+
+
+
+
+
+
+
+// setInterval(function(){
+
+
+function movePlayer() {
+    var left = parseFloat(window.getComputedStyle(player).getPropertyValue('left'));
+    left += direction
+    player.style.left = left + 'px'
+    // position += direction
+    //   player.style.left = position + 'px';
+
+      if (position < 0) {
             position = 0 }
-        }, 1)
 
-        setInterval (function(){
-            if (position >= 910) {
+             if (position >= 910) {
                 position = 910
             }
-        }, 1)
 
+            
+
+        }
+            
+
+
+// }, 1)
+
+        
 
 
 
@@ -116,7 +187,7 @@ setInterval(function(){
 //     console.log(direction)
 
 //     requestAnimationFrame(update);
-// }
+
     </script>
 </body>
 </html>
