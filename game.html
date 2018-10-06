@@ -20,7 +20,7 @@
     var player = document.querySelector('.player')
     var playerPositionX = parseInt(window.getComputedStyle(player).getPropertyValue('left'))
     
-    var playerRadius = parseInt(window.getComputedStyle(player).getPropertyValue('width')) / 2;
+    var playerRadius = parseInt(window.getComputedStyle(player).getPropertyValue('width'));
 
 
     var board = document.querySelector('.wrapper')
@@ -31,6 +31,9 @@
     var meteors = [];
     const randomPos = Math.ceil(Math.random() * 910);
     const randomSpeed = Math.ceil(Math.random() * 3);
+    var beginAt = Date.now()
+    var lastMeteorTime = beginAt;
+    var meteorDTime = Math.random() * 3000;  
 // var meteor = null;
 // update ();
 
@@ -39,6 +42,12 @@
 
   update();
   function update() {
+    var now = Date.now()
+    
+    if (now - lastMeteorTime > meteorDTime) {
+      createMeteor()
+    lastMeteorTime = now
+}
     
     meteors.forEach(function (meteor) {
       var top = parseFloat(window.getComputedStyle(meteor).top);
@@ -46,9 +55,9 @@
       var playerPositionX = parseInt(window.getComputedStyle(player).getPropertyValue('left'))
       var playerPositionY = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
       
-      if (left > playerPositionX - playerRadius && left < playerPositionX + playerRadius && 
-        top === playerPositionY - playerRadius) {
-          console.log('hit')
+      if (left >= playerPositionX - playerRadius/2 && left <= playerPositionX + playerRadius/2 && 
+        top >= playerPositionY - playerRadius) {
+          return
       }
       top += meteor.speed;
       if (top > board.clientHeight) {
@@ -102,7 +111,10 @@ function createMeteor() {
     var meteor = document.createElement('div')
     meteor.classList.add('meteor')
     meteor.speed = Math.ceil(Math.random() * 3)
-    return meteor;
+    meteor.style.left = Math.random() * 650 + 'px';
+    board.appendChild(meteor)
+    // meteors.push(meteor)
+    meteors.push(meteor);
    
 
 }
@@ -128,7 +140,7 @@ board.appendChild(meteor)
   }
 
 
-showMeteorAfterTime(5000);
+// showMeteorAfterTime(5000);
 
   function showMeteorAfterTime(time) {
       
