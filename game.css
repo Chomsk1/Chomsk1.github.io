@@ -11,7 +11,7 @@
 }
 
 body {
-    overflow: hidden;
+    /* overflow: hidden; */
     background: #202a32;
 }
 
@@ -23,6 +23,7 @@ body {
     margin: 0 auto;
     background: url(img/gwiazdy.png);
     background-size: contain;
+    
     
     background-position: 0 100%;
     border-radius: 20%;
@@ -38,7 +39,7 @@ body {
     background: url(img/7.png) no-repeat center;
     background-size: contain;
     width: 50px;
-    /* background: white; */
+    /* animation: invincible 1s infinite; */
 }
 
 .meteor {
@@ -59,21 +60,23 @@ body {
 }
 
 .panel {
-    width: 100vw;
+    width: 1036px;
     height: 300px;
     background: url(img/panel.jpg) no-repeat center;
     background-size: cover;
     background-position: 0 -800px;
+    border-radius: 50px 50px 0 0;
     display: flex;
     position: absolute;
     z-index: 1000;
 }
 
 .score {
-    width: 146px;
+    width: 150px;
     height: 50px;
     background: cyan;
-    margin: 0 auto;
+    margin-right: 70px;
+    margin-left: 435px;
     margin-top: 7px;
     text-align: center;
     color: #DD0048;
@@ -81,3 +84,40 @@ body {
     padding: 10px;
 }
 
+.health {
+    width: 70px;
+    height: 10px;
+    background: greenyellow;
+    margin-right: 295px;
+    margin-top: 8px;
+    display: flex;
+}
+
+.heart {
+    height: 100%;
+    /* flex: 1 1 0; */
+    width: 20%;
+    background: red;
+}
+
+.lost {
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    /* margin: 0 auto; */
+    font-size: 150px;
+    color: red;
+}
+
+
+@keyframes invincible {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+
+    
+}

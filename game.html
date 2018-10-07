@@ -14,6 +14,13 @@
     </div>
       <div class="panel">
         <div class="score"></div>
+        <div class="health">
+          <div class="heart"></div>
+          <div class="heart"></div>
+          <div class="heart"></div>
+          <div class="heart"></div>
+          <div class="heart"></div>
+        </div>
       </div>
     
 
@@ -41,13 +48,14 @@
     var bulletDTime = 1000
     var meteorDTime = 800 
     var boardHeight = parseInt(window.getComputedStyle(board).getPropertyValue('height'));
+    var lastHit = beginAt;
+      
     var fire = 0;
     var score = 0;
     var scorePoint = 1;
-    var x = 0;
-    var y = 0;
-// var meteor = null;
-// update ();
+   
+    var life = 5;
+
 
 
 
@@ -68,10 +76,18 @@
       var playerPositionY = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
       
       if (left >= playerPositionX - playerRadius/2 - 15 && left <= playerPositionX + playerRadius/2 + 15 && 
-        top >= playerPositionY - playerRadius + 17 ) {
-          return
-      }
-      top += meteor.speed;
+      top >= playerPositionY - playerRadius + 17 ) {
+          if (!player.invincible) {
+            console.log(life)
+          var heart = document.querySelectorAll('.heart:last-child')
+               heart.forEach(function(element){
+                 element.remove();
+                 life = life - 1
+               })
+               toggleInvincible();
+              }
+            }
+              top += meteor.speed;
       if (top >= 370) {
         meteor.remove()
       }
@@ -118,8 +134,17 @@
 
     
 
-  //  moveBackground();
+  
     movePlayer();
+
+    if (life === 0) {
+      
+      
+      var display = document.querySelector('.score');
+      display.style.fontSize = 25 + 'px';
+      display.innerHTML = 'YOU LOST'
+      return
+    }
 
     requestAnimationFrame(update);
   }
@@ -142,6 +167,17 @@ if (key === 'Space') {
   fire = 1;
 }
 })
+
+function toggleInvincible() {
+  player.invincible = true;
+  if (player.invincible = true){
+    player.style.animation = 'invincible ' + 1 + 's' + ' infinite'
+  }
+  id = window.setTimeout(function(){
+    player.invincible = false
+    player.style.animation = 'none'
+  }, 3000)
+}
 
 
 
@@ -171,9 +207,8 @@ function createMeteor() {
     var meteor = document.createElement('div')
     meteor.classList.add('meteor')
     meteor.speed = Math.ceil(Math.random() * 3)
-    meteor.style.left = Math.random() * 650 + 'px';
+    meteor.style.left = Math.floor(Math.random() * 570) + 50 + 'px'; 
     board.appendChild(meteor)
-    // meteors.push(meteor)
     meteors.push(meteor);
    
 
@@ -190,75 +225,21 @@ function createBullet() {
   bullets.push(bullet)
 }
 
-function putMeteorOnBoard(meteor, board) {
-meteor.style.left = Math.random() * 650 + 'px';
-board.appendChild(meteor)
-}
-
-function moveBackground() {
-
-   
-  x += 1
-   y += 1
-    
-    console.log(y)
-
-    board.style.backgroundPosition=x+'px '+y+' px'; 
-
-  y = y = 1
-  x = x - 1
-}
 
 
- function kickMeteor(meteor) {
-    // setTimeout(function () {
-    //   meteors = meteors.filter(function (falling) {
-    //     return meteor !== falling;
-    //   })
-    //   meteor.remove();
-    // }, Math.random() * 3000 + 5000);
-    // if (meteor.top > board.clientHeight) {
-    //     meteor.remove();
-    // }
-    meteors.push(meteor);
-    meteors.sort((a, b) => a.speed - b.speed).forEach(meteor => board.appendChild(meteor));
-  }
-
-
-// showMeteorAfterTime(5000);
-
-  function showMeteorAfterTime(time) {
-      
-    setTimeout(function () {
-      var meteor = createMeteor();
-      putMeteorOnBoard(meteor, board);
-      kickMeteor(meteor);
-      showMeteorAfterTime(Math.random() * 1000);
-    }, time);
-
-  }
-
-
-
-
-
-
-
-// setInterval(function(){
 
 
 function movePlayer() {
     var left = parseFloat(window.getComputedStyle(player).getPropertyValue('left'));
     left += direction
     player.style.left = left + 'px'
-    // position += direction
-    //   player.style.left = position + 'px';
+    
 
-      if (left < 0 ) {
-            player.style.left = 0 + 'px'}
+      if (left < 60 ) {
+            player.style.left = 60 + 'px'}
 
-             if (left > 650) {
-                player.style.left = 650 + 'px'
+             if (left > 590) {
+                player.style.left = 590 + 'px'
             }
 
             
@@ -266,24 +247,6 @@ function movePlayer() {
         }
             
 
-
-// }, 1)
-
-        
-
-
-
-// function update() {
-
-//     function move(direction) {
-//         position += direction
-//         player.style.marginLeft = position + 'px';
-//     }
-    
-
-//     console.log(direction)
-
-//     requestAnimationFrame(update);
 
     </script>
 </body>
