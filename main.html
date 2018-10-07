@@ -2,62 +2,23 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Twoja mama</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
 </head>
 <body>
     <div class="wrapper">
-        <div class="header">
-            <div>All you need is a</div>
-            <div>Junior Front-end Developer</div>
-            <div>with a spark</div>
-        </div>
-        <div id="nav">
-            <ul>
-                <li><a href="#">Main</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Footer</a></li>
-                <li><a href="#">Mobyyn</a></li>
-                <li><a href="#">Jołlł</a></li>
-            </ul>
-        </div>
-        <div class="aboutMe">
-            <div class="me"><div>About Me</div></div>
-        </div>
 
-
-
-
-
-
-
-
+        <nav class="navigation">
+        <div class="ball1"></div>
+        <div class="ball2"></div>
+        <div class="ball3"></div>
+        <div class="ball4"></div>
+        <div class="ball5"></div>
+        </nav>
 
     </div>
-    <script>
-        var nav = document.querySelector('#nav');
-        var navTop = nav.offsetTop;
-
-
-function stickyNavigation() {
-  console.log('navTop = ' + navTop);
-  console.log('scrollY = ' + window.scrollY);
-
-  if (window.scrollY >= navTop) {
-    // nav offsetHeight = height of nav
-    // document.body.style.paddingTop = nav.offsetHeight + 'px';
-    nav.classList.add('fixed-nav');
-  } else {
-    // document.body.style.paddingTop = 0;
-    nav.classList.remove('fixed-nav');
-  }
-}
-
-window.addEventListener('scroll', stickyNavigation);
-
-
-    </script>
-
 </body>
 </html>
