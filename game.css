@@ -1,20 +1,32 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'myFont';
+}
+
+
+@font-face {
+    font-family: 'myFont';
+    src: url(img/Alcubierre.otf);
 }
 
 body {
     overflow: hidden;
+    background: #202a32;
 }
 
 .wrapper {
     display: flex;
     position: relative;
-    height: 100vh;
+    height: 400px;
     width: 700px;
     margin: 0 auto;
-    background: url(img/gwiazdy.png) no-repeat center;
-    background-size: cover;
+    background: url(img/gwiazdy.png);
+    background-size: contain;
+    
+    background-position: 0 100%;
+    border-radius: 20%;
+   
 }
 
 .player {
@@ -37,3 +49,34 @@ body {
     background-size: contain;
     position: absolute;
 }
+
+.bullet {
+    height: 50px;
+    width: 50px;
+    background: white;
+    position: absolute;
+}
+
+.panel {
+    width: 100vw;
+    height: 300px;
+    background: url(img/panel.jpg) no-repeat center;
+    background-size: cover;
+    background-position: 0 -800px;
+    display: flex;
+    position: absolute;
+    z-index: 1000;
+}
+
+.score {
+    width: 146px;
+    height: 50px;
+    background: cyan;
+    margin: 0 auto;
+    margin-top: 7px;
+    text-align: center;
+    color: #DD0048;
+    font-size: 35px;
+    padding: 10px;
+}
+
