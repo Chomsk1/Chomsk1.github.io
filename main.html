@@ -10,15 +10,52 @@
 </head>
 <body>
     <div class="wrapper">
+    
+    <!-- <div class="container"> -->
+    <div class="button"></div>
+    <!-- </div> -->
 
-        <nav class="navigation">
-        <div class="ball1"></div>
-        <div class="ball2"></div>
-        <div class="ball3"></div>
-        <div class="ball4"></div>
-        <div class="ball5"></div>
-        </nav>
+
+    <nav class="navigation">
+    <div class="aboutMe">Me</div>
+    <div class="skills">Skills</div>
+    <div class="contact">Contact</div>
+    <div class="game">Game</div>
+    </nav>
+
+
+
+
+
 
     </div>
+
+    <script>
+    var board = document.querySelector('.wrapper')    
+    var button = document.querySelector('.button')
+    var nav = document.querySelector('.navigation')
+    var container = document.querySelector('.container')
+    var me = document.querySelector('.aboutMe')
+
+    button.onclick = function(){
+        nav.style.marginBottom = 0 + 'px'
+        button.style.marginTop = 37 + 'vh'
+    }
+    
+    me.onclick = function(){
+        
+        button.classList.add('toggle')
+        button.style.marginTop = 0 + 'px'
+        // button.appendChild(page1)
+        var id = setTimeout(function(){
+        button.innerHTML = '<p style="color: red;">ABOUT ME</p><p style="font-size: 30px;" > <br> <br> My name is Hubert <br> <br> I am a Junior Front End Developer <br> <br> </p>'
+            }, 2000)
+        // page1.style.height = 100 + 'vh';
+        // page1.style.width = 100 + 'vw'
+    }
+
+
+
+    </script>
 </body>
 </html>
