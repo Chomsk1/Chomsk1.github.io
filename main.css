@@ -40,6 +40,16 @@ body {
     transition: all 2s ease-in-out;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+
 /* .container{
     width: 100vw;
     height: 100px;
