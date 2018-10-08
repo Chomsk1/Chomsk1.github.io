@@ -36,6 +36,7 @@
     var nav = document.querySelector('.navigation')
     var container = document.querySelector('.container')
     var me = document.querySelector('.aboutMe')
+    var contact = document.querySelector('.contact')
 
     button.onclick = function(){
         nav.style.marginBottom = 0 + 'px'
@@ -48,13 +49,42 @@
         button.style.marginTop = 0 + 'px'
         // button.appendChild(page1)
         var id = setTimeout(function(){
-        button.innerHTML = '<p style="color: red;">ABOUT ME</p><p style="font-size: 30px;" > <br> <br> My name is Hubert <br> <br> I am a Junior Front End Developer <br> <br> </p>'
+        button.innerHTML = '<p style="color: red;">ABOUT ME</p><p style="font-size: 30px;" > <br> <br> My name is Hubert <br> <br> Jack of all trades <br> <br> Currently a Junior Front End Developer  </p>'
             }, 2000)
         // page1.style.height = 100 + 'vh';
         // page1.style.width = 100 + 'vw'
     }
 
+    contact.onclick = function(){
 
+        button.classList.add('toggle')
+        button.style.marginTop = 0 + 'px'
+        // button.appendChild(page1)
+        var id = setTimeout(function(){
+        button.innerHTML = '<p style="color: red;">CONTACT</p><p style="font-size: 30px;" ><br> <br> Feel free to contact me at: <br> <br> hubertwisniewski.front@gmail.com   </p>'
+            }, 2000)
+        // page1.style.height = 100 + 'vh';
+        // page1.style.width = 100 + 'vw'
+
+
+    }
+
+
+    setInterval(function(){
+
+   
+
+    if (button.classList.contains('toggle')){
+
+        button.onclick = function() {
+            button.classList.remove('toggle')
+            button.style.marginTop = 37 + 'vh'
+            button.innerHTML = ''
+        }
+
+    }
+
+     }, 16)
 
     </script>
 </body>
