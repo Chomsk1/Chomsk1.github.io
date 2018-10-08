@@ -11,7 +11,7 @@
 }
 
 body {
-    overflow: hidden;
+    /* overflow: hidden; */
     background: #202a32;
 }
 
@@ -68,6 +68,7 @@ body {
     background-position: 0 -800px;
     border-radius: 50px 50px 0 0;
     display: flex;
+    position: relative;
     /* position: absolute; */
     z-index: 1000;
     margin: 0 auto;
@@ -111,6 +112,22 @@ body {
     color: red;
 }
 
+.instructions {
+    height: 136px;
+    width: 518px;
+    align-self: flex-end;
+    left: 259px;
+    top: 100px;
+    background: #B6FF00;
+    position: absolute;
+    /* background: #202a32; */
+}
+
+.instructions:hover {
+    -webkit-animation: neon4 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon4 1.5s ease-in-out infinite alternate;
+  animation: neon4 1.5s ease-in-out infinite alternate;
+}
 
 @keyframes invincible {
     from {
@@ -123,3 +140,13 @@ body {
 
     
 }
+
+@keyframes neon4 {
+    from {
+      box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #B6FF00, 0 0 70px #B6FF00, 0 0 80px #B6FF00, 0 0 100px #B6FF00, 0 0 150px #B6FF00;
+    }
+    to {
+      box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #B6FF00, 0 0 35px #B6FF00, 0 0 40px #B6FF00, 0 0 50px #B6FF00, 0 0 75px #B6FF00;
+    }
+  }
+  
